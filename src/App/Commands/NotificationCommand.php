@@ -7,6 +7,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 
+use Notification;
+
 
 
 class NotificationCommand extends Command
@@ -17,13 +19,16 @@ class NotificationCommand extends Command
             ->setDescription('Sends a notification to the customer when a purchase has been made.')
             ->setHelp('Demonstration of custom commands created by Symfony Console component.')
             ->addArgument('client_id', InputArgument::REQUIRED, 'Pass the client id.');
-            ->addArgument('typeof_channel', InputArgument::REQUIRED, 'Send by Mail or SMS.');
-            ->addArgument('purchase_id', InputArgument::REQUIRED, 'Pass the purchase id');
+             
+            
     }
  
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $notification = new Notification();
+        $input = $input ->getArgument('client_id');
         
+        $result = $notification->send_notification($input);
     }
 }
 
