@@ -11,10 +11,10 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class HelloworldCommand extends Command
 {
-    protected function configure()
+    protected function purchase_notification()
     {
-        $this->setName('hello-world')
-            ->setDescription('Prints Hello-World!')
+        $this->setName('purchase-notification')
+            ->setDescription('Sends a notification to the customer when a purchase has been made.')
             ->setHelp('Demonstration of custom commands created by Symfony Console component.')
             ->addArgument('username', InputArgument::REQUIRED, 'Pass the username.');
     }
