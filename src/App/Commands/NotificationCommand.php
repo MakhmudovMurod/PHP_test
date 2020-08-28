@@ -9,19 +9,21 @@ use Symfony\Component\Console\Input\InputArgument;
 
 
 
-class HelloworldCommand extends Command
+class NotificationCommand extends Command
 {
-    protected function purchase_notification()
+    protected function configure()
     {
         $this->setName('purchase-notification')
             ->setDescription('Sends a notification to the customer when a purchase has been made.')
             ->setHelp('Demonstration of custom commands created by Symfony Console component.')
-            ->addArgument('username', InputArgument::REQUIRED, 'Pass the username.');
+            ->addArgument('client_id', InputArgument::REQUIRED, 'Pass the client id.');
+            ->addArgument('typeof_channel', InputArgument::REQUIRED, 'Send by Mail or SMS.');
+            ->addArgument('purchase_id', InputArgument::REQUIRED, 'Pass the purchase id');
     }
  
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln(sprintf('Hello World!, %s', $input->getArgument('username')));
+        
     }
 }
 
